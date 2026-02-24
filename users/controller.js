@@ -1,4 +1,4 @@
-import getPool from '../shared/database/database.js'
+import { getPool } from '../shared/database/database.js'
 
 export const listUsers = async (req, res) => {
   try {

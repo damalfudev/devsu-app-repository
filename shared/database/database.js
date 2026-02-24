@@ -143,4 +143,3 @@ export const initDatabase = async () => {
 
 // Export getPool as default for backward compatibility
 export default getPool
-
