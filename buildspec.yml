@@ -20,9 +20,10 @@ phases:
   build:
     commands:
       - echo "Build phase started on $(date)"
+      - export IMAGE_TAG=${CODEBUILD_RESOLVED_SOURCE_VERSION:0:7}-$(date +%s)
+      - echo "Using image tag $IMAGE_TAG"
       - echo "Building Docker image..."
       - docker build -t $ECR_REPOSITORY_URI:$IMAGE_TAG .
-      - docker tag $ECR_REPOSITORY_URI:$IMAGE_TAG $ECR_REPOSITORY_URI:latest
       
       - echo "Installing Trivy..."
       - |
@@ -39,7 +40,6 @@ phases:
       - echo "Post-build phase started on $(date)"
       - echo "Vulnerability scan passed, pushing image to ECR..."
       - docker push $ECR_REPOSITORY_URI:$IMAGE_TAG
-      - docker push $ECR_REPOSITORY_URI:latest
       
       - echo "Updating Kubernetes deployment manifest..."
       - sed -i "s|\${AWS_ACCOUNT_ID}|$AWS_ACCOUNT_ID|g" k8s/app.yaml
