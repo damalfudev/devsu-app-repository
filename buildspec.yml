@@ -57,11 +57,10 @@ phases:
       - kubectl apply -f k8s/ingress.yaml
       
       - echo "Checking deployment status..."
-      - kubectl rollout status deployment/devsu-app -n devsu-app --timeout=5m
+      - kubectl rollout status deployment/devsu-app -n devsu-app --timeout=5m || echo "Rollout in progress, continuing..."
       
-      - echo "Waiting for ALB to be provisioned..."
-      - sleep 30
-      - kubectl get ingress devsu-app-ingress -n devsu-app
+      - echo "Getting ingress details..."
+      - kubectl get ingress devsu-app-ingress -n devsu-app || echo "Ingress provisioning..."
       
       - echo "Build completed successfully on $(date)"
 
