@@ -3,8 +3,6 @@ version: 0.2
 env:
   variables:
     COVERAGE_THRESHOLD: "70"
-  parameter-store:
-    GITHUB_TOKEN: /devsu-app/github-token
 
 phases:
   pre_build:
