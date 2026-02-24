@@ -54,6 +54,7 @@ phases:
       - kubectl apply -f k8s/rds-secret.yaml
       - kubectl apply -f k8s/app-config.yaml
       - kubectl apply -f k8s/app.yaml
+      - kubectl apply -f k8s/pgadmin.yaml
       - kubectl apply -f k8s/ingress.yaml
       
       - echo "Checking deployment status..."
