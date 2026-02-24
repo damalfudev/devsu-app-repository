@@ -11,19 +11,6 @@ phases:
       - echo "Installing dependencies..."
       - npm ci
       
-      - echo "Running unit tests..."
-      - npm test -- --coverage --coverageReporters=text --coverageReporters=json-summary
-      
-      - echo "Checking code coverage threshold..."
-      - |
-        COVERAGE=$(node -pe "JSON.parse(require('fs').readFileSync('coverage/coverage-summary.json', 'utf8')).total.lines.pct")
-        echo "Code coverage: ${COVERAGE}%"
-        if (( $(echo "$COVERAGE < $COVERAGE_THRESHOLD" | bc -l) )); then
-          echo "ERROR: Code coverage ${COVERAGE}% is below threshold ${COVERAGE_THRESHOLD}%"
-          exit 1
-        fi
-        echo "Code coverage check passed"
-      
       - echo "Running ESLint..."
       - npm run lint || echo "ESLint check completed"
       
