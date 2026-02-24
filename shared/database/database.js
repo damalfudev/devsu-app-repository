@@ -112,6 +112,9 @@ export const getPool = async () => {
     max: 5,
     idleTimeoutMillis: 30000,
     connectionTimeoutMillis: 2000,
+    ssl: {
+      rejectUnauthorized: false,
+    },
   })
 
   console.log(`Database pool created for host: ${config.host}`)
