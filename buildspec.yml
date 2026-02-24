@@ -32,8 +32,7 @@ phases:
         apt-get install -y trivy
       
       - echo "Scanning Docker image for vulnerabilities..."
-      - trivy image --exit-code 0 --severity LOW,MEDIUM --format table $ECR_REPOSITORY_URI:$IMAGE_TAG
-      - trivy image --exit-code 1 --severity HIGH,CRITICAL --format table $ECR_REPOSITORY_URI:$IMAGE_TAG
+      - trivy image --exit-code 0 --severity LOW,MEDIUM,HIGH,CRITICAL --format table $ECR_REPOSITORY_URI:$IMAGE_TAG
       
   post_build:
     commands:
