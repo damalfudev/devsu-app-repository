@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+  namespace: devsu-app
+data:
+  PORT: "8000"
+  NODE_ENV: "production"
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: rds-credentials
+  namespace: devsu-app
+type: Opaque
+stringData:
+  # These values will be populated by Terraform from AWS Secrets Manager
+  # or updated by external-secrets operator in production
+  DATABASE_HOST: "PLACEHOLDER_RDS_ENDPOINT"
+  DATABASE_PORT: "5432"
+  DATABASE_NAME: "devsu_app"
+  DATABASE_USER: "postgres"
+  DATABASE_PASSWORD: "PLACEHOLDER_PASSWORD"
