@@ -1,7 +1,7 @@
 {
-  "name": "demo",
+  "name": "devsu-app",
   "version": "1.0.0",
-  "description": "",
+  "description": "Production-ready Node.js REST API for user management with PostgreSQL, deployed on AWS EKS",
   "main": "index.js",
   "type": "module",
   "scripts": {
@@ -9,12 +9,27 @@
     "test": "jest",
     "lint": "eslint . --ext .js"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/damalfudev/devsu-app-repository.git"
+  },
+  "keywords": [
+    "nodejs",
+    "express",
+    "postgresql",
+    "rest-api",
+    "kubernetes",
+    "aws",
+    "eks",
+    "docker"
+  ],
   "jest": {
     "transform": {
       "^.+\\.js?$": "babel-jest"
     }
   },
   "author": "Devsu",
+  "license": "UNLICENSED",
   "dependencies": {
     "@aws-sdk/client-secrets-manager": "^3.450.0",
     "express": "4.18.2",
